@@ -20,9 +20,6 @@ class Model {
 	
 public:
 	
-	/*Model(std::string plik) {
-		plik = plik;
-	}*/
 	std::string plik;
 	glm::mat4 P,V, M;
 	int vertexCount;
@@ -70,31 +67,21 @@ public:
 	}
 
 	void drawSolid(glm::mat4 P, glm::mat4 V, glm::mat4 M) {
-		//M = glm::rotate(M, angle_y, glm::vec3(1.0f, 0.0f, 0.0f)); //Wylicz macierz modelu
-		//M = glm::rotate(M, angle_x, glm::vec3(0.0f, 1.0f, 0.0f)); //Wylicz macierz modelu
-
-		//M = glm::scale(M, glm::vec3(0.02, 0.05, 0.03));
-
 		sp->use();//Aktywacja programu cieniuj¹cego
+
 		//Przeslij parametry programu cieniuj¹cego do karty graficznej
 		glUniformMatrix4fv(sp->u("P"), 1, false, glm::value_ptr(P));
 		glUniformMatrix4fv(sp->u("V"), 1, false, glm::value_ptr(V));
 		glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(M));
 
-		//glm::vec4 light = glm::vec4(-1, 1.5, 1, 1);
-		//glm::vec4 light2 = glm::vec4(-1, 2.5, -1, 1);
 		glm::vec4 light = glm::vec4(0, 21, -13, 1);
 		glm::vec4 light2 = glm::vec4(13, 11, 12, 1);
-		//glm::vec4 light2 = glm::vec4(1, 10, 5, 1);
 
 		glUniform4fv(sp->u("lp"), 1, glm::value_ptr(light));
 		glUniform4fv(sp->u("lp2"), 1, glm::value_ptr(light2));
 
 		glEnableVertexAttribArray(sp->a("vertex"));  //W³¹cz przesy³anie danych do atrybutu vertex
 		glVertexAttribPointer(sp->a("vertex"), 4, GL_FLOAT, false, 0, verts.data()); //Wska¿ tablicê z danymi dla atrybutu vertex
-
-		//glEnableVertexAttribArray(sp->a("color"));  //W³¹cz przesy³anie danych do atrybutu color
-		//glVertexAttribPointer(sp->a("color"), 4, GL_FLOAT, false, 0, colors); //Wska¿ tablicê z danymi dla atrybutu color
 
 		glEnableVertexAttribArray(sp->a("normal"));  //W³¹cz przesy³anie danych do atrybutu normal
 		glVertexAttribPointer(sp->a("normal"), 4, GL_FLOAT, false, 0, norms.data()); //Wska¿ tablicê z danymi dla atrybutu normal
@@ -106,7 +93,6 @@ public:
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, Tex);
 
-		//glDrawArrays(GL_TRIANGLES,0,vertexCount); //Narysuj obiekt
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, indices.data());
 
 		glDisableVertexAttribArray(sp->a("vertex"));  //Wy³¹cz przesy³anie danych do atrybutu vertex
