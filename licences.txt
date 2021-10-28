@@ -1,0 +1,7 @@
+Licencje:
+	- Tekstura trawy: https://www.the3rdsequence.com/texturedb/download/1/texture/png/512/green+grass-512x512.png
+	- Tekstura tła: https://freestocktextures.com - przerobiona na proporcje kwadratu, zapisana jako png
+	- Tekstura jabłka: https://pl.pinterest.com/pin/814588651322841665/ - przerobiona na proporcje kwadratu, zapisana jako png
+	- Objekt głowy snake'a: https://free3d.com/3d-model/rattlesnake-v04--784635.html , głowa uszykana z pełnego modelu węża (przerobione) z tego darmowego modelu
+
+Autor: Daniel Gralik

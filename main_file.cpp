@@ -85,7 +85,7 @@ int historySnakeDirection[10000];
 int counterOfHistoryPoints = 0;
 int counterToSavePosition = 0;
 bool endGame = false;
-float speedRateOfSnake = 2;
+float speedRateOfSnake = 2.0;
 //Model floor;
 
 glm::vec3 pos = glm::vec3(0, 26.83, -16.41);
@@ -235,7 +235,7 @@ void initOpenGLProgram(GLFWwindow* window) {
 
 	sp=new ShaderProgram("v_simplest.glsl",NULL,"f_simplest.glsl");
 	sp2 = new ShaderProgram("v_cube.glsl", NULL, "f_cube.glsl");
-	Tex = readTexture("grass.png");
+	Tex = readTexture("grasslight-big.png");
 	Tex2 = readTexture("bricks3b_specular.png");
 	Tex3 = readTexture("appleTex.png");
 	Tex4 = readTexture("stone-wall.png");
@@ -266,7 +266,7 @@ void initOpenGLProgram(GLFWwindow* window) {
 	bodySnakeModel.sp = sp;
 	bodySnakeModel.Tex = Tex2;
 	
-	cubeInfoModel.loadModel("kostka.obj");
+	cubeInfoModel.loadModel("cube.obj");
 	cubeInfoModel.sp = sp2;
 	cubeInfoModel.Tex = Tex5;
 }
@@ -346,7 +346,7 @@ glm::vec3 randApplePosition() {
 
 bool isSuicide() {
 	bool suicided = false;
-	float suicideRangeX = 0.3f, suicideRangeZ = 0.22f;
+	float suicideRangeX = 0.22f, suicideRangeZ = 0.22f;
 	int tempPointsAmount = counterOfHistoryPoints;
 
 	for (int i = eatenApples, j = tempPointsAmount - 2; (tempPointsAmount - i) <= j && 0 < j; j--) {
